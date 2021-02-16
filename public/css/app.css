@@ -1,1 +1,19 @@
+.text {
+  color: #000;
+}
+
+.second-color {
+  background-color: #dccdc0;
+}
+
+.mg-register {
+  margin-left: 30%;
+}
+
+.register-text {
+  font-size: 1.875rem;
+  text-transform: uppercase;
+  font: inherit;
+  text-align: center;
+}
 
