@@ -11,9 +11,20 @@
 }
 
 .register-text {
-  font-size: 1.875rem;
+  font-size: 22px;
   text-transform: uppercase;
-  font: inherit;
   text-align: center;
+}
+
+.mg-t-register {
+  margin-top: 5%;
+}
+
+.less-spaces {
+  margin-top: -20px !important;
+}
+
+.forgot-pass {
+  margin-top: 20px !important;
 }
 
