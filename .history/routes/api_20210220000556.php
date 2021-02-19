@@ -31,8 +31,4 @@ Route::group(['middleware' => 'jwt.refresh'], function(){
     Route::get('auth/refresh', 'AuthController@refresh');
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Auth::routes();

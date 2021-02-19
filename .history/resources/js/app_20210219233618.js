@@ -67,8 +67,7 @@ const router = new VueRouter({
                     name: 'verify',
                     component: Verify,
                     meta: {
-                        auth: false,
-                        title: 'Verify',
+                        auth: false
                     }
                 },
                 {

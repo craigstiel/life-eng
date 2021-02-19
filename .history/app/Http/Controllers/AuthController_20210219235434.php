@@ -41,7 +41,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         $user = DB::table('users')->where('email', $credentials['email'])->first();
-
+        dd($user);
         if ($user !== null) {
             if (\Hash::check($request->password, $user->password)) {
                 if($user->email_verified_at !== null) {

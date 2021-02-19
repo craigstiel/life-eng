@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth  as JWTAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -41,7 +39,6 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         $user = DB::table('users')->where('email', $credentials['email'])->first();
-
         if ($user !== null) {
             if (\Hash::check($request->password, $user->password)) {
                 if($user->email_verified_at !== null) {

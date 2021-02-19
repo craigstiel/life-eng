@@ -43,6 +43,7 @@ class AuthController extends Controller
         $user = DB::table('users')->where('email', $credentials['email'])->first();
 
         if ($user !== null) {
+            dd($user);
             if (\Hash::check($request->password, $user->password)) {
                 if($user->email_verified_at !== null) {
                     if ( ! $token = JWTAuth::attempt($credentials)) {

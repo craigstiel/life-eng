@@ -2992,7 +2992,7 @@ __webpack_require__.r(__webpack_exports__);
             app.$bus.$emit("GetAdmin");
           },
           error: function error(_error) {
-            if (_error.response.status === 400) {
+            if (_error.response.status === 402) {
               app.$bus.$emit("alert", "E-mail не был верифицирован!", "error");
             }
 
@@ -3117,7 +3117,8 @@ __webpack_require__.r(__webpack_exports__);
               if (_error.response.status === 500) {
                 app.$bus.$emit("alert", "Этот e-mail уже был зарегистрирован", "error");
               }
-            }
+            },
+            redirect: '/verify'
           });
         } else {
           app.$bus.$emit("alert", "Пароли не совпадают", "error");
@@ -3467,14 +3468,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__.default({
       name: 'verify',
       component: _components_auth_Verify__WEBPACK_IMPORTED_MODULE_12__.default,
       meta: {
-        auth: false
+        auth: false,
+        title: 'Verify'
       }
     }, {
       path: '/restore',
       name: 'restore_password',
       component: _components_auth_RestorePassword__WEBPACK_IMPORTED_MODULE_13__.default,
       meta: {
-        auth: false
+        auth: false,
+        title: 'Restore Password'
       }
     }, {
       path: '/reset/:token',
@@ -22519,7 +22522,19 @@ var render = function() {
                   _vm._v(" "),
                   _c("v-spacer"),
                   _vm._v(" "),
-                  _c("v-btn", { attrs: { text: "" } }, [_vm._v("Выход")])
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.$auth.logout()
+                        }
+                      }
+                    },
+                    [_vm._v("Выход")]
+                  )
                 ],
                 2
               )
@@ -23312,38 +23327,17 @@ var render = function() {
   return _c(
     "v-row",
     [
-      _c("v-col", { attrs: { md: "2" } }),
+      _c("v-col", { attrs: { md: "1" } }),
       _vm._v(" "),
-      _c(
-        "v-col",
-        { attrs: { cols: "12", md: "8" } },
-        [
-          _c(
-            "v-card",
-            { staticClass: "mx-auto mycontent-left", attrs: { height: "120" } },
-            [
-              _c("v-card-text"),
-              _vm._v(" "),
-              _c(
-                "v-card-text",
-                {
-                  staticStyle: {
-                    "font-size": "20px",
-                    "font-family": "'Roboto', sans-serif",
-                    "text-align": "center",
-                    "text-transform": "uppercase"
-                  }
-                },
-                [_vm._v(_vm._s(_vm.$ml.with("VueJS").get("reg_rule")))]
-              )
-            ],
-            1
+      _c("v-col", { attrs: { cols: "12", md: "10" } }, [
+        _c("p", { staticClass: "verify-text" }, [
+          _vm._v(
+            "\n      Для входа в аккаунт Вам необходимо верифицировать e-mail\n    "
           )
-        ],
-        1
-      ),
+        ])
+      ]),
       _vm._v(" "),
-      _c("v-col", { attrs: { md: "2" } })
+      _c("v-col", { attrs: { md: "1" } })
     ],
     1
   )
